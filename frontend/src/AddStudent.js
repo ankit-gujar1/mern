@@ -12,7 +12,8 @@ function AddStudent() {
 
     function addStudent(e) {
         e.preventDefault();
-        axios.post('http://localhost:8080/', { sID, sAge, sName })
+        // axios.post('http://localhost:8080/', { sID, sAge, sName })
+        axios.post('https://student-details-4tcv.onrender.com/', { sID, sAge, sName })
             .then((r) => {
                 console.log(r);
                 navigate('/');

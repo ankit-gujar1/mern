@@ -16,7 +16,8 @@ function App() {
 
   // const [n,setN]=useState(0);
   useEffect(() => {
-    axios.get('http://localhost:8080/')
+    // axios.get('http://localhost:8080/')
+    axios.get('https://student-details-4tcv.onrender.com/')
       .then((r) => {
         setStudents(r.data);
         console.log(students); //this wont log any thing this will log empty array but data is loaded in students so dw
