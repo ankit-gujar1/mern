@@ -15,7 +15,7 @@ app.use(empRouter);
 mongoose.connect(process.env.MONGO_URI)
 .then(()=>{
     app.listen(process.env.PORT,()=>{
-        console.log("connected to db and port",process.env.PORT)
+        console.log("we are live bitches");
     })
 })
 .catch((e)=>{
