@@ -1,6 +1,5 @@
 const express=require('express');
 const router=express.Router()
-// const Student=require('../models/studentModel')
 const {getAllStudents, postStudent, getStudent, deleteStudent, updateStudent}=require('../controller/studentController')
 
 router.get('/',getAllStudents)

@@ -16,8 +16,8 @@ function App() {
 
   // const [n,setN]=useState(0);
   useEffect(() => {
-    // axios.get('http://localhost:8080/')
-    axios.get('https://student-details-4tcv.onrender.com/')
+    axios.get('http://localhost:8080/')
+    // axios.get('https://student-details-4tcv.onrender.com/')
       .then((r) => {
         setStudents(r.data);
         console.log(students); //this wont log any thing this will log empty array but data is loaded in students so dw
@@ -30,10 +30,10 @@ function App() {
   return (
     <div>
       <Navbar />
-      <div class="row justify-content-center">
-        <div class="col-8">
+      <div className="row justify-content-center">
+        <div className="col-8">
           <h1 className="text-center my-2">Students Details</h1>
-          <table className="table table-striped text-center">
+          <table className="table table-bordered table-striped text-center">
             <thead>
               <tr>
                 <th>Id</th>
@@ -43,7 +43,7 @@ function App() {
               </tr>
             </thead>
             <tbody>
-              {
+              { //these {} are imp without it we can not use .map function for iteration 
                 students.map((i) =>
                   <tr key={i._id}>
                     <td>{i.sID}</td>

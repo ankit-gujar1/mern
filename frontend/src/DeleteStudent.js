@@ -14,8 +14,8 @@ function DeleteStudent() {
     const navigate = useNavigate();
 
     useEffect(() => {
-        // axios.get('http://localhost:8080/' + id)
-        axios.get('https://student-details-4tcv.onrender.com/' + id)
+        axios.get('http://localhost:8080/' + id)
+        // axios.get('https://student-details-4tcv.onrender.com/' + id)
             .then((r) => {
                 // setStudent(r.data);
                 // console.log(r.data);
@@ -30,8 +30,8 @@ function DeleteStudent() {
 
     function deleteStudent(e) {
         e.preventDefault();
-        // axios.delete('http://localhost:8080/' + id, { sID, sAge, sName })
-        axios.delete('https://student-details-4tcv.onrender.com/' + id, { sID, sAge, sName })
+        axios.delete('http://localhost:8080/' + id, { sID, sAge, sName })
+        // axios.delete('https://student-details-4tcv.onrender.com/' + id, { sID, sAge, sName })
             .then((r) => {
                 console.log(r);
                 navigate('/');

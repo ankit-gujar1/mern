@@ -14,8 +14,8 @@ function EditStudent() {
     const navigate = useNavigate();
 
     useEffect(() => {
-        // axios.get('http://localhost:8080/' + id)
-        axios.get('https://student-details-4tcv.onrender.com/' + id)
+        axios.get('http://localhost:8080/' + id)
+        // axios.get('https://student-details-4tcv.onrender.com/' + id)
             .then((r) => {
                 // setStudent(r.data);
                 // console.log(r.data);
@@ -30,8 +30,8 @@ function EditStudent() {
 
     function editStudent(e) {
         e.preventDefault();
-        // axios.patch('http://localhost:8080/' + id, { sID, sAge, sName })
-        axios.patch('https://student-details-4tcv.onrender.com/' + id, { sID, sAge, sName })
+        axios.patch('http://localhost:8080/' + id, { sID, sAge, sName })
+        // axios.patch('https://student-details-4tcv.onrender.com/' + id, { sID, sAge, sName })
             .then((r) => {
                 console.log(r);
                 navigate('/');
