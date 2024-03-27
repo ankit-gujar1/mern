@@ -15,7 +15,7 @@ const loginUser=async (req,res)=>{
 
         const token=createToken(u._id);
 
-        res.status(200).json({token,u});
+        res.status(200).json({token,uName});
     }
     catch(e){
         res.status(400).json({error:e.message});
@@ -40,7 +40,7 @@ const signupUser=async (req,res)=>{
 
         const token=createToken(u._id); //creating token as soon as user get signup/register
 
-        res.status(200).json({token,u});
+        res.status(200).json({token,uName});
     }
     catch(e){
         res.status(400).json({error:e.message})

@@ -19,15 +19,16 @@ function AddStudent() {
                 navigate('/');
             })
             .catch((e) => {
-                console.log(e);
+                //e.response.data.error for accessing the errors we set in backend code ref Signup.js component for details
+                console.log(e.response.data.error); 
             })
     }
 
     return (
         <div>
             <Navbar />
-            <div class="row justify-content-center">
-                <div class="col-4">
+            <div className="row justify-content-center">
+                <div className="col-4">
                     <h1 className="text-center my-3">Add Student Details</h1>
                     <form onSubmit={addStudent}>
                         <div className="mb-3">
