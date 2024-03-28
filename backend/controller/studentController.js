@@ -2,8 +2,9 @@ const { default: mongoose } = require('mongoose');
 const Student=require('../models/studentModel')
 
 const getAllStudents=async (req,res)=>{
+    const user_id=req.user._id; //reffer to requireAuth middleware
     try {
-        const s=await Student.find();
+        const s=await Student.find({user_id});
         res.status(200).json(s);
     } catch (e) {
         res.status(400).json({error:e.message})
@@ -11,9 +12,10 @@ const getAllStudents=async (req,res)=>{
 }
 
 const postStudent=async (req,res)=>{
+    const user_id=req.user._id; //reffer to requireAuth middleware
     const {sName,sID,sAge}=req.body;
     try {
-        const s=await Student.create({sName,sID,sAge});
+        const s=await Student.create({sName,sID,sAge,user_id});
         res.status(200).json(s);
     } catch (e) {
         // console.log(e);

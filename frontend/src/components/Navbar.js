@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import "bootstrap/dist/css/bootstrap.min.css"
 import { useAuthContext } from '../hooks/useAuthContext'
 
@@ -7,11 +7,14 @@ function Navbar() {
 
     const { user } = useAuthContext();
 
+    const navigate=useNavigate();
+
     //logic of logout is simple, we just have to remove username and token stored in localstorage and calling dispatch function for logout case
     const { dispatch } = useAuthContext();
     function logout() {
         localStorage.removeItem('user');
         dispatch({ type: 'LOGOUT' });
+        navigate('/login');
     }
 
     return (

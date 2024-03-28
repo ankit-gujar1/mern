@@ -7,13 +7,28 @@ const cors=require('cors');
 const mongoose=require('mongoose');
 
 const studentRouter = require('./routes/studentRoutes');
-const userRouter=require('./routes/userRoutes')
+const userRouter=require('./routes/userRoutes');
+const requireAuth=require('./middlewares/requireAuth');
+
 
 app.use(cors());
 app.use(express.json());
 
-app.use(studentRouter); //CRUD Middleware for student
+/*
+
+//we can use requireAuth middleware in studentRouter.js also reffer studentRouter.js commented code. If we want to use it in studentRouter.js then follow below commented stuff
+
+//userRouter should be first in sequence, to access stuff in studentRouter we need authorization and authorization is done by login/signup
+//if we keep studentRouter before userRouter then due to authorization we will not be able to do login/signup
+
 app.use(userRouter); //CRUD Middleware for user
+app.use(studentRouter); //CRUD Middleware for student
+
+*/
+
+app.use(userRouter);
+app.use(requireAuth);
+app.use(studentRouter);
 
 mongoose.connect(process.env.MONGO_URI)
 .then(()=>{

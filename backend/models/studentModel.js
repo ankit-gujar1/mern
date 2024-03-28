@@ -11,6 +11,11 @@ const Schema=mongoose.Schema({
     sAge:{
         type:Number,
         required:true
+    },
+    //to show data added by that particular user
+    user_id:{
+        type:String,
+        required:true
     }
 },{timestamps:true});
 

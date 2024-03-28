@@ -7,8 +7,9 @@ import Hello from './components/hello';
 import AddStudent from './components/AddStudent';
 import EditStudent from './components/EditStudent';
 import DeleteStudent from './components/DeleteStudent';
-import Login from './components/Login'
-import Signup from './components/Signup'
+import Login from './components/Login';
+import Signup from './components/Signup';
+
 
 const router=createBrowserRouter([
   {path:'/',element:<App/>},

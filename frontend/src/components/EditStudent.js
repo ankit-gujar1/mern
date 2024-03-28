@@ -3,6 +3,7 @@ import "bootstrap/dist/css/bootstrap.min.css"
 import Navbar from "./Navbar";
 import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
+import { useAuthContext } from "../hooks/useAuthContext";
 
 function EditStudent() {
 
@@ -13,8 +14,13 @@ function EditStudent() {
     const [sAge, setsAge] = useState();
     const navigate = useNavigate();
 
+    const {user}=useAuthContext();
+
     useEffect(() => {
-        axios.get('http://localhost:8080/' + id)
+
+        if(!user) return;
+
+        axios.get('http://localhost:8080/' + id, {headers:{Authorization:'Bearer ' + user.token}})
         // axios.get('https://student-details-4tcv.onrender.com/' + id)
             .then((r) => {
                 // setStudent(r.data);
@@ -30,7 +36,10 @@ function EditStudent() {
 
     function editStudent(e) {
         e.preventDefault();
-        axios.patch('http://localhost:8080/' + id, { sID, sAge, sName })
+
+        if(!user) return;
+
+        axios.patch('http://localhost:8080/' + id, { sID, sAge, sName }, {headers:{Authorization:'Bearer ' + user.token}})
         // axios.patch('https://student-details-4tcv.onrender.com/' + id, { sID, sAge, sName })
             .then((r) => {
                 console.log(r);

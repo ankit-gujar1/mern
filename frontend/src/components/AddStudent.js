@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css"
 import Navbar from "./Navbar";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { useAuthContext } from "../hooks/useAuthContext";
 
 function AddStudent() {
     const [sID, setsID] = useState();
@@ -10,9 +11,25 @@ function AddStudent() {
     const [sAge, setsAge] = useState();
     const navigate = useNavigate();
 
+    const {user}=useAuthContext(); //to extract token from it and we send that token as header
+
+    //when user is not found i.e., user is not logged in then below code will automatically redirect us to login component
+    useEffect(()=>{
+        if(!user){
+            navigate('/login');
+            return;
+        }
+    },[user])
+
     function addStudent(e) {
         e.preventDefault();
-        axios.post('http://localhost:8080/', { sID, sAge, sName })
+
+        if(!user){
+            // navigate('/login');
+            return;
+        }
+
+        axios.post('http://localhost:8080/', { sID, sAge, sName }, {headers:{Authorization:'Bearer ' + user.token}})
         // axios.post('https://student-details-4tcv.onrender.com/', { sID, sAge, sName })
             .then((r) => {
                 console.log(r);

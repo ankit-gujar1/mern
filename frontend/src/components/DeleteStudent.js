@@ -3,6 +3,7 @@ import "bootstrap/dist/css/bootstrap.min.css"
 import Navbar from "./Navbar";
 import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
+import { useAuthContext } from "../hooks/useAuthContext";
 
 function DeleteStudent() {
 
@@ -13,8 +14,13 @@ function DeleteStudent() {
     const [sAge, setsAge] = useState();
     const navigate = useNavigate();
 
+    const {user}=useAuthContext();
+
     useEffect(() => {
-        axios.get('http://localhost:8080/' + id)
+
+        if(!user) return;
+
+        axios.get('http://localhost:8080/' + id, {headers:{Authorization:'Bearer ' + user.token}})
         // axios.get('https://student-details-4tcv.onrender.com/' + id)
             .then((r) => {
                 // setStudent(r.data);
@@ -30,7 +36,10 @@ function DeleteStudent() {
 
     function deleteStudent(e) {
         e.preventDefault();
-        axios.delete('http://localhost:8080/' + id, { sID, sAge, sName })
+
+        if(!user) return;
+
+        axios.delete('http://localhost:8080/' + id, {headers:{Authorization:'Bearer ' + user.token}})
         // axios.delete('https://student-details-4tcv.onrender.com/' + id, { sID, sAge, sName })
             .then((r) => {
                 console.log(r);

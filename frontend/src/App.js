@@ -1,11 +1,15 @@
 import React from "react";
 import { useEffect, useState } from "react";
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import "bootstrap/dist/css/bootstrap.min.css"
 import Navbar from "./components/Navbar";
+import { useAuthContext } from "./hooks/useAuthContext";
 
 function App() {
+
+  const navigate=useNavigate();
+
   const [students, setStudents] = useState([]);
 
   // async function fetchData() {
@@ -15,8 +19,18 @@ function App() {
   // }
 
   // const [n,setN]=useState(0);
+
+  const {user}=useAuthContext(); //to extract token from it and we send that token as header
+
   useEffect(() => {
-    axios.get('http://localhost:8080/')
+
+    //when user is not found i.e., user is not logged in then below code will automatically redirect us to login component
+    if(!user){
+      navigate('/login');
+      return;
+    }
+
+    axios.get('http://localhost:8080/',{headers:{Authorization:'Bearer ' + user.token}})
     // axios.get('https://student-details-4tcv.onrender.com/')
       .then((r) => {
         setStudents(r.data);
@@ -25,7 +39,7 @@ function App() {
       .catch((e) => console.log(e));
 
     // fetchData();
-  }, []) //[] is imp
+  }, [user]) //[] is imp
 
   return (
     <div>
