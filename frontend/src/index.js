@@ -9,6 +9,7 @@ import EditStudent from './components/EditStudent';
 import DeleteStudent from './components/DeleteStudent';
 import Login from './components/Login';
 import Signup from './components/Signup';
+import NotFound from './components/NotFound';
 
 
 const router=createBrowserRouter([
@@ -18,7 +19,8 @@ const router=createBrowserRouter([
   {path:'/edit/:id',element:<EditStudent/>},
   {path:'/delete/:id',element:<DeleteStudent/>},
   {path:'/login',element:<Login/>},
-  {path:'/signup',element:<Signup/>}
+  {path:'/signup',element:<Signup/>},
+  {path:'*',element:<NotFound/>}
 ])
 
 const root = ReactDOM.createRoot(document.getElementById('root'));

@@ -32,7 +32,7 @@ function Signup() {
         e.preventDefault();
         console.log(uName,password);
 
-        axios.post('http://localhost:8080/signup',{uName,password})
+        axios.post('https://mern-gb38.onrender.com/'+'signup',{uName,password})
         .then((r)=>{
 
             //console.log things for better understanding

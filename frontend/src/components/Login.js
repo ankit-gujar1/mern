@@ -26,7 +26,7 @@ function Login() {
         e.preventDefault();
         console.log(uName,password);
 
-        axios.post('http://localhost:8080/login',{uName,password})
+        axios.post('https://mern-gb38.onrender.com/'+'login',{uName,password})
         .then((r)=>{
 
             // console.log(r.data);

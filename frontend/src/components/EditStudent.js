@@ -20,8 +20,8 @@ function EditStudent() {
 
         if(!user) return;
 
-        axios.get('http://localhost:8080/' + id, {headers:{Authorization:'Bearer ' + user.token}})
-        // axios.get('https://student-details-4tcv.onrender.com/' + id)
+        // axios.get('http://localhost:8080/' + id, {headers:{Authorization:'Bearer ' + user.token}})
+        axios.get('https://mern-gb38.onrender.com/' + id, {headers:{Authorization:'Bearer ' + user.token}})
             .then((r) => {
                 // setStudent(r.data);
                 // console.log(r.data);
@@ -39,8 +39,8 @@ function EditStudent() {
 
         if(!user) return;
 
-        axios.patch('http://localhost:8080/' + id, { sID, sAge, sName }, {headers:{Authorization:'Bearer ' + user.token}})
-        // axios.patch('https://student-details-4tcv.onrender.com/' + id, { sID, sAge, sName })
+        // axios.patch('http://localhost:8080/' + id, { sID, sAge, sName }, {headers:{Authorization:'Bearer ' + user.token}})
+        axios.patch('https://mern-gb38.onrender.com/' + id, { sID, sAge, sName }, {headers:{Authorization:'Bearer ' + user.token}})
             .then((r) => {
                 console.log(r);
                 navigate('/');

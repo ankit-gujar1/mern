@@ -30,8 +30,8 @@ function App() {
       return;
     }
 
-    axios.get('http://localhost:8080/',{headers:{Authorization:'Bearer ' + user.token}})
-    // axios.get('https://student-details-4tcv.onrender.com/')
+    // axios.get('http://localhost:8080/',{headers:{Authorization:'Bearer ' + user.token}})
+    axios.get('https://mern-gb38.onrender.com', {headers:{Authorization:'Bearer ' + user.token}})
       .then((r) => {
         setStudents(r.data);
         console.log(students); //this wont log any thing this will log empty array but data is loaded in students so dw

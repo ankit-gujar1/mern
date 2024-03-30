@@ -29,8 +29,8 @@ function AddStudent() {
             return;
         }
 
-        axios.post('http://localhost:8080/', { sID, sAge, sName }, {headers:{Authorization:'Bearer ' + user.token}})
-        // axios.post('https://student-details-4tcv.onrender.com/', { sID, sAge, sName })
+        // axios.post('http://localhost:8080/', { sID, sAge, sName }, {headers:{Authorization:'Bearer ' + user.token}})
+        axios.post('https://mern-gb38.onrender.com/', { sID, sAge, sName }, {headers:{Authorization:'Bearer ' + user.token}})
             .then((r) => {
                 console.log(r);
                 navigate('/');
