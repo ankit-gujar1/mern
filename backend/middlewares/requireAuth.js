@@ -1,6 +1,7 @@
 const jwt=require('jsonwebtoken');
-const User=require('../models/userModel')
+const User=require('../models/userModel');
 
+//requireAuth is user defined middleware which prevent not signed up or not logged in user to access any other routes than  /login and /signup. So basically it protect routes from user if user is not logged in
 const requireAuth = async (req, res, next) => {
 
     //authorization is the property which is present in headers of req and we can access it like we access req body by doing req.headers
