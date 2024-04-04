@@ -1,6 +1,6 @@
 import { createContext, useEffect, useReducer } from "react";
 
-export const AuthContext=createContext()
+export const AuthContext=createContext(); //this context will be used to share authentication state throughout the application
 
 export const authReducer=(state,action)=>{
 
