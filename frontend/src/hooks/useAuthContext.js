@@ -1,4 +1,4 @@
-//it just call AuthContext and store the stuff in useAuthContext, when we use use AuthContext we get things which are in AuthContext like user data
+//useAuthContext just call AuthContext and store the stuff in useAuthContext, when we use use AuthContext we get things which are in AuthContext like user data
 
 import { AuthContext } from "../context/AuthContext"
 import { useContext } from "react"
