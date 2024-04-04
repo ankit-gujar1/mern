@@ -17,6 +17,7 @@ export const authReducer=(state,action)=>{
 
 export const AuthContextProvider=({children})=>{
 
+    //useReducer is alternative to useState for managing more complex state logic, especially when the state transitions depend on previous state or involve multiple sub-values
     const [state,dispatch]=useReducer(authReducer,{ //state name is user and dispatch function name is authReducer
         user:null
     })
