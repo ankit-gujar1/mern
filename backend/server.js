@@ -12,7 +12,7 @@ const requireAuth=require('./middlewares/requireAuth');
 
 
 app.use(cors());
-app.use(express.json());
+app.use(express.json()); //if we don't use router and directly use app.get(=) then this line will give error
 
 /*
 
